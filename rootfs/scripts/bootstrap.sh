@@ -4,6 +4,7 @@
 /scripts/package-manager.sh update
 
 # Setup tools
+/scripts/setup-s6overlay.sh
 /scripts/setup-shell.sh
 /scripts/setup-nvim.sh
 /scripts/setup-lazygit.sh
