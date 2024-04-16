@@ -24,7 +24,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions /root/.oh-my-zsh/cust
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /root/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 # See: https://starship.rs/installing/
-echo "Installinf Sartship..."
+echo "Installing Sartship..."
 curl -sS https://starship.rs/install.sh | sh -s -- --yes
 
 # See: https://github.com/tmux-plugins/tpm
