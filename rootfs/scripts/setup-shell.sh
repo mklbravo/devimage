@@ -5,9 +5,10 @@ echo "Setting-Up shell..."
 
 echo "Installing required packages..."
 /scripts/package-manager.sh install \
-    curl \
-    git \
-    zsh
+  curl \
+  git \
+  tmux \
+  zsh
 
 # See: https://ohmyz.sh/#install
 echo "Installing Oh My Zsh..."
@@ -26,3 +27,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /root/.oh-my-
 echo "Installinf Sartship..."
 curl -sS https://starship.rs/install.sh | sh -s -- --yes
 
+# See: https://github.com/tmux-plugins/tpm
+echo "Installing Tmux Plugin Manager..."
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+~/.tmux/plugins/tpm/bin/install_plugins
