@@ -5,4 +5,6 @@ help: ## Displays this list of targets with descriptions
 build-go-image: ## Build the Go development image
 	docker build --force-rm --file Dockerfile --tag devimage:go --build-arg "FROM_IMAGE=golang:1.22-bookworm" .
 
+build-rust-image: ## Build the Rust development image
+	docker build --force-rm --file Dockerfile --tag devimage:rust --build-arg "FROM_IMAGE=rust:1.77-bookworm" .
 
