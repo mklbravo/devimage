@@ -5,7 +5,8 @@ echo "Setting-Up Neovim..."
 echo "Installing required packages..."
 /scripts/package-manager.sh install \
   curl \
-  git
+  git \
+  ripgrep
 
 echo "Getting Neovim package..."
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
