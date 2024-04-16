@@ -3,7 +3,7 @@
 echo "Setting-Up Neovim..."
 
 echo "Installing required packages..."
-/scripts/package-manager.sh install \
+/build-scripts/package-manager.sh install \
   curl \
   git \
   ripgrep

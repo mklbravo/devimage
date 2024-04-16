@@ -4,7 +4,8 @@ FROM ${FROM_IMAGE}
 
 COPY rootfs/ /
 
-RUN chmod +x /scripts/* \
-    && /scripts/bootstrap.sh
+RUN chmod +x /build-scripts/* \
+    && /build-scripts/bootstrap.sh \
+    && rm -rf /build-scripts
 
 ENTRYPOINT ["/init"]
