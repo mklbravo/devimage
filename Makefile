@@ -5,6 +5,4 @@ help: ## Displays this list of targets with descriptions
 build-go-image: ## Build the Go development image
 	docker build --force-rm  --file Go/Dockerfile --tag devimage:go --build-arg "GO_VERSION=1.22" .
 
-test: build-go-image
-	docker run --rm -it devimage:test zsh
 
