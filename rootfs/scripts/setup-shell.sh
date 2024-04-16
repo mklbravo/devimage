@@ -22,6 +22,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions /root/.oh-my-zsh/cust
 # See: https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /root/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
+# See: https://starship.rs/installing/
 echo "Installinf Sartship..."
 curl -sS https://starship.rs/install.sh | sh -s -- --yes
 

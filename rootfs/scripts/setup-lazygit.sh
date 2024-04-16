@@ -5,8 +5,8 @@ echo "Setting-Up Lazygit..."
 
 echo "Installing required packages..."
 /scripts/package-manager.sh install \
-    curl \
-    tar
+  curl \
+  tar
 
 echo "Getting Lazygit latest version..."
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')

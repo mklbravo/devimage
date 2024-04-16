@@ -22,7 +22,7 @@ INSTALL_FOLDER=/etc/neovim
 echo "Moving Neovim to ${INSTALL_FOLDER}..."
 mv ./squashfs-root ${INSTALL_FOLDER}
 
-echo "Creating symlink..."
+echo "Creating Neovim symlink..."
 ln -s "$INSTALL_FOLDER/AppRun" /usr/bin/nvim
 
 echo "Cloning Neovim configuration..."
