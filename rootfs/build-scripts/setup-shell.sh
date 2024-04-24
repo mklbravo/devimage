@@ -8,6 +8,7 @@ echo "Installing required packages..."
   curl \
   git \
   tmux \
+  tmuxinator \
   zsh
 
 # See: https://ohmyz.sh/#install
