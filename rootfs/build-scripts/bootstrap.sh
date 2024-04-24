@@ -2,6 +2,7 @@
 
 # Update repositories info
 /build-scripts/package-manager.sh update
+/build-scripts/package-manager.sh upgrade
 
 # Setup tools
 /build-scripts/setup-s6overlay.sh

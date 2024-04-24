@@ -21,6 +21,20 @@ install_packages() {
   esac
 }
 
+upgrade_packages() {
+  OS_ID=$(get_os_id)
+
+  case $OS_ID in
+  "ubuntu" | "debian")
+    echo "apt-get upgrade --yes"
+    ;;
+  *)
+    echo "Unsupported OS: '{$OS_ID}'"
+    exit 1
+    ;;
+  esac
+}
+
 update_repositories_info() {
   OS_ID=$(get_os_id)
 
@@ -47,6 +61,9 @@ case $ACTION in
   ;;
 "update")
   eval $(update_repositories_info)
+  ;;
+"upgrade")
+  eval $(upgrade_packages)
   ;;
 *)
   echo "Usage: $0 {install|remove}"
