@@ -1,5 +1,5 @@
 .EXPORT_ALL_VARIABLES:
-IMAGE_NAME=ghrc.io/mklbravo/devimage
+IMAGE_NAME=ghcr.io/mklbravo/devimage
 
 .PHONY: help
 help: ## Displays this list of targets with descriptions
