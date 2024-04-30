@@ -32,3 +32,8 @@ curl -sS https://starship.rs/install.sh | sh -s -- --yes
 echo "Installing Tmux Plugin Manager..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/bin/install_plugins
+
+# See: https://github.com/junegunn/fzf
+echo "Install Fuzzy Finder..."
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --all --no-bash --no-fish
