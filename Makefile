@@ -8,6 +8,9 @@ help: ## Displays this list of targets with descriptions
 build-go-image: ## Build the Go development image
 	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):go --build-arg "FROM_IMAGE=golang:1.22-bookworm" .
 
+build-node18-image: ## Build the Node 18 development image
+	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):node18 --build-arg "FROM_IMAGE=node:18-bookworm" .
+
 build-rust-image: ## Build the Rust development image
 	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):rust --build-arg "FROM_IMAGE=rust:1.77-bookworm" .
 
