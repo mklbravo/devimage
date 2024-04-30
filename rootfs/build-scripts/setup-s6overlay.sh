@@ -3,7 +3,7 @@
 echo "Setting-Up s6-overlay..."
 
 echo "Installing required packages..."
-/scripts/package-manager.sh install \
+/build-scripts/package-manager.sh install \
   curl \
   tar \
   xz-utils
