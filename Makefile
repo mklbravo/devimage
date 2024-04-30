@@ -5,15 +5,15 @@ IMAGE_NAME=ghcr.io/mklbravo/devimage
 help: ## Displays this list of targets with descriptions
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}'
 
-build-go-image: ## Build the Go development image
-	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):go --build-arg "FROM_IMAGE=golang:1.22-bookworm" .
+build-go-1.22: ## Build  Go 1.22 development image
+	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):go-1.22 --build-arg "FROM_IMAGE=golang:1.22-bookworm" .
 
-build-node18-image: ## Build the Node 18 development image
-	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):node18 --build-arg "FROM_IMAGE=node:18-bookworm" .
+build-node-18: ## Build  Node 18 development image
+	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):node-18 --build-arg "FROM_IMAGE=node:18-bookworm" .
 
-build-rust-image: ## Build the Rust development image
-	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):rust --build-arg "FROM_IMAGE=rust:1.77-bookworm" .
+build-rust-1.77: ## Build  Rust 1.77 development image
+	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):rust-1.77 --build-arg "FROM_IMAGE=rust:1.77-bookworm" .
 
-build-php8-image: ## Build the Rust development image
-	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):rust --build-arg "FROM_IMAGE=php:8.1-fpm-bullseye" .
+build-php-8.1: ## Build  PHP 8.1 development image
+	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):php-8.1 --build-arg "FROM_IMAGE=php:8.1-fpm-bullseye" .
 
