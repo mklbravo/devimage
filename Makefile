@@ -14,3 +14,6 @@ build-node18-image: ## Build the Node 18 development image
 build-rust-image: ## Build the Rust development image
 	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):rust --build-arg "FROM_IMAGE=rust:1.77-bookworm" .
 
+build-php8-image: ## Build the Rust development image
+	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):rust --build-arg "FROM_IMAGE=php:8.1-fpm-bullseye" .
+
