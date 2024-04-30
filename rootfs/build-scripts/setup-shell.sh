@@ -16,7 +16,7 @@ echo "Installing Oh My Zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 
 echo "Setting zsh as the default shell..."
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
 
 echo "Installing Oh My Zsh plugins..."
 # See: https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
