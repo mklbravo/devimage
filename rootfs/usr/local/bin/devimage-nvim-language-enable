@@ -1,0 +1,16 @@
+#!/bin/bash
+
+enable_language() {
+    language_config_file="${HOME}/.config/nvim/lua/languages/${1}.lua.dist"
+
+    if [ -f "${language_config_file}" ]; then
+        cp "${language_config_file}" "${HOME}/.config/nvim/lua/languages/${1}.lua"
+        echo "Enabled language: ${1}"
+    else
+        echo "Language not found: ${1}"
+    fi
+}
+
+for lang in "$@"; do
+    enable_language "$lang"
+done
