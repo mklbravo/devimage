@@ -4,7 +4,7 @@
 # ##############################################################################
 
 get_os_id() {
-  echo $(sed -n 's/^ID=\(.*\)$/\1/p' /etc/os-release)
+  sed -n 's/^ID=\(.*\)$/\1/p' /etc/os-release
 }
 
 install_packages() {
@@ -12,7 +12,7 @@ install_packages() {
 
   case $OS_ID in
   "ubuntu" | "debian")
-    echo "apt-get install --no-install-recommends --yes $@"
+    echo "apt-get install --no-install-recommends --yes $*"
     ;;
   *)
     echo "Unsupported OS: '{$OS_ID}'"
@@ -57,13 +57,13 @@ ACTION=$1
 case $ACTION in
 "install")
   shift # Removes the first argument from the list of command-line arguments
-  eval $(install_packages $@)
+  eval "$(install_packages "$*")"
   ;;
 "update")
-  eval $(update_repositories_info)
+  eval "$(update_repositories_info)"
   ;;
 "upgrade")
-  eval $(upgrade_packages)
+  eval "$(upgrade_packages)"
   ;;
 *)
   echo "Usage: $0 {install|remove}"
