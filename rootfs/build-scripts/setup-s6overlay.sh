@@ -4,6 +4,7 @@ echo "Setting-Up s6-overlay..."
 
 echo "Installing required packages..."
 /build-scripts/package-manager.sh install \
+  ca-certificates \
   curl \
   tar \
   xz-utils
