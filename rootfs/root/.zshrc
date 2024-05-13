@@ -7,6 +7,7 @@ export EDITOR='nvim'
 
 plugins=(
     git
+    tmux
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
