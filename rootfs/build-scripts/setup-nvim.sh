@@ -4,8 +4,11 @@ echo "Setting-Up Neovim..."
 
 echo "Installing required packages..."
 /build-scripts/package-manager.sh install \
+  build-essential \
   curl \
   git \
+  python3 \
+  python3-venv \
   ripgrep
 
 echo "Getting Neovim package..."
