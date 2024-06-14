@@ -32,7 +32,7 @@ jobs:
       matrix:
         include:
           - image: "php:8.1-fpm-bullseye"
-            tag: "php8.1"
+            tag: "php-8.1"
 
     steps:
       - name: "Checkout Repository"
