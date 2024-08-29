@@ -1,12 +1,12 @@
 # https://docs.github.com/en/actions
-name: "Publish Docker Images"
+name: "Build Docker Images"
 
 # https://docs.github.com/en/actions/using-workflows/triggering-a-workflow
 on:
   # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push
   push:
     branches:
-      - "main"
+      - "**"
   # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
   schedule:
     # Every Sunday at 00:00
@@ -19,8 +19,8 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build-and-push-image:
-    name: "Build and Push Docker Image"
+  build-docker-image:
+    name: "Build Docker Image"
 
     permissions:
       contents: "read"
@@ -43,6 +43,7 @@ jobs:
 
       - name: "Log in to the Container registry"
         uses: "docker/login-action@v3.2.0"
+        if: github.ref == 'refs/heads/main'
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -54,12 +55,12 @@ jobs:
         with:
           images: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
 
-      - name: "Build and push Docker image"
+      - name: "Build Docker image"
         uses: "docker/build-push-action@v5.4.0"
         with:
           build-args: |
             FROM_IMAGE=${{ matrix.image }}
           context: "."
           labels: ${{ steps.meta.outputs.labels }}
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
           tags: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.tag }}"
