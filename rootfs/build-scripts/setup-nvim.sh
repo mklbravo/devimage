@@ -30,4 +30,4 @@ echo "Creating Neovim symlink..."
 ln -s "$INSTALL_FOLDER/AppRun" /usr/bin/nvim
 
 echo "Cloning Neovim configuration..."
-git clone https://github.com/mklbravo/nvim-config.git ~/.config/nvim
+git clone --depth 1 --branch ${NVIM_CONFIG_VERSION} https://github.com/mklbravo/nvim-config.git ~/.config/nvim

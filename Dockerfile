@@ -2,6 +2,8 @@ ARG FROM_IMAGE
 
 FROM ${FROM_IMAGE}
 
+ENV NVIM_CONFIG_VERSION=0.1.0
+
 COPY rootfs/ /
 
 RUN chmod +x /build-scripts/* \
