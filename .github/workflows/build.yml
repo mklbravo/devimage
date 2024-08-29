@@ -1,5 +1,5 @@
 # https://docs.github.com/en/actions
-name: "Publish Docker Images"
+name: "Build Docker Images"
 
 # https://docs.github.com/en/actions/using-workflows/triggering-a-workflow
 on:
@@ -19,8 +19,8 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build-and-push-image:
-    name: "Build and Push Docker Image"
+  build-docker-image:
+    name: "Build Docker Image"
 
     permissions:
       contents: "read"
