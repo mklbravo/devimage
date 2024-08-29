@@ -31,10 +31,11 @@ jobs:
     strategy:
       matrix:
         include:
+          - image: "golang:1.22-bookworm"
+            tag: "go-1.22"
+
           - image: "php:8.1-fpm-bullseye"
             tag: "php-8.1"
-          - image: "golang:1.22-bookworm"
-            tag: "golang-1.22"
 
     steps:
       - name: "Checkout Repository"
