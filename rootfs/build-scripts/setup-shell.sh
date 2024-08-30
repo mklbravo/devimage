@@ -6,7 +6,6 @@ echo "Setting-Up shell..."
 echo "Installing required packages..."
 /build-scripts/package-manager.sh install \
   curl \
-  gh \
   git \
   tmux \
   tmuxinator \
