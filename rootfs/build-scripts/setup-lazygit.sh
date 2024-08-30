@@ -4,7 +4,7 @@
 echo "Setting-Up Lazygit..."
 
 echo "Installing required packages..."
-/scripts/package-manager.sh install \
+/build-scripts/package-manager.sh install \
   curl \
   tar
 
