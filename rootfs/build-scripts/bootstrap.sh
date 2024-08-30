@@ -17,6 +17,7 @@ executeBuildScript "setup-shell"
 executeBuildScript "setup-nvim"
 executeBuildScript "setup-lazygit"
 executeBuildScript "setup-secrets"
+executeBuildScript "setup-github-cli"
 
 # Clean Up
 apt-get clean
