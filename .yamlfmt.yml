@@ -1,0 +1,8 @@
+# https://github.com/google/yamlfmt/blob/main/docs/config-file.md#basic-formatter
+formatter:
+  eof_newline: true
+  indent: 2
+  pad_line_comments: 1
+  retain_line_breaks_single: true
+  trim_trailing_whitespace: true
+  type: "basic"
