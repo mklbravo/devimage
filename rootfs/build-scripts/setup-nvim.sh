@@ -31,3 +31,6 @@ ln -s "$INSTALL_FOLDER/AppRun" /usr/bin/nvim
 
 echo "Cloning Neovim configuration..."
 git clone --depth 1 --branch ${NVIM_CONFIG_VERSION} https://github.com/mklbravo/nvim-config.git ~/.config/nvim
+
+echo "Install Lazy dependencies..."
+nvim --headless +Lazy install +qall
