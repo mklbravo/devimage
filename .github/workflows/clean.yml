@@ -20,6 +20,7 @@ jobs:
           GHCR_TOKEN: "${{ secrets.PACKAGE_DELETE_TOKEN }}"
         run: |
           # Get all image versions in the repository
+          # See: https://docs.github.com/en/rest/packages/packages?apiVersion=2022-11-28#list-package-versions-for-a-package-owned-by-a-user
           IMAGE_VERSIONS=$(curl -s -H "Authorization: Bearer $GHCR_TOKEN" \
             "https://api.github.com/users/$GHCR_OWNER/packages/container/$GHCR_REPO/versions")
 
@@ -32,6 +33,7 @@ jobs:
             if [ "$TAG_COUNT" -eq "0" ]; then
               echo "Deleting untagged image with version ID: $IMAGE_NAME"
               curl -s -X DELETE -H "Authorization: Bearer $GHCR_TOKEN" \
+              # See: https://docs.github.com/en/rest/packages/packages?apiVersion=2022-11-28#delete-package-version-for-a-user
                 -H "Accept: application/vnd.github+json" \
                 "https://api.github.com/users/$GHCR_OWNER/packages/container/$GHCR_REPO/versions/$VERSION_ID"
             fi
