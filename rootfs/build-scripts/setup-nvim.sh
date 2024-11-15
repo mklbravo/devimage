@@ -11,17 +11,6 @@ echo "Installing required packages..."
   python3-venv \
   ripgrep
 
-# Node.js is required for some plugins: [GH Copilot]
-echo "Installing NVM (Node Version Manager)..."
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
-
-echo "Sourcing NVM..."
-#shellcheck disable=SC1091
-. /root/.nvm/nvm.sh
-
-echo "Installing latest LTS Node.js..."
-nvm install --lts
-
 echo "Getting Neovim package..."
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
