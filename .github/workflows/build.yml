@@ -62,5 +62,6 @@ jobs:
             FROM_IMAGE=${{ matrix.image }}
           context: "."
           labels: ${{ steps.meta.outputs.labels }}
+          platforms: "linux/amd64,linux/arm64"
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.tag }}"
