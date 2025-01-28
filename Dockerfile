@@ -17,9 +17,9 @@ RUN apt-get update && apt-get install --yes --no-install-recommends \
 apt-get clean && \
 rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/neovim/neovim /source
+RUN git clone https://github.com/neovim/neovim /neovim
 
-WORKDIR /source
+WORKDIR /neovim
 
 RUN git checkout stable && \
     make CMAKE_BUILD_TYPE=Release && \
@@ -30,7 +30,11 @@ RUN git checkout stable && \
 #--------------------------------------------------------------------------
 FROM ${FROM_IMAGE}
 
-COPY --from=nvim-builder /usr/local/bin/nvim /usr/local/bin/nvim
+# Copy the built Neovim binary from the builder stage
+COPY --from=nvim-builder /neovim/build/bin/nvim /usr/local/bin/nvim
+
+# Copy runtime files (optional, but recommended for full functionality)
+COPY --from=nvim-builder /neovim/runtime /usr/local/share/nvim/runtime
 
 ENV NVIM_CONFIG_VERSION=1.1.0
 
