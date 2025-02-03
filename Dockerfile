@@ -38,7 +38,7 @@ COPY --from=nvim-builder /neovim/runtime /usr/local/share/nvim/runtime
 
 # Set environment variables for locale
 ENV LANG=C.UTF-8
-ENV LANGUAGE=en_US:en
+ENV LANGUAGE=C.UTF-8
 ENV LC_ALL=C.UTF-8
 
 COPY rootfs/ /
