@@ -12,6 +12,7 @@ executeBuildScript() {
 /build-scripts/package-manager.sh upgrade
 
 # Setup tools
+executeBuildScript "setup-locales"
 executeBuildScript "setup-s6overlay"
 executeBuildScript "setup-shell"
 executeBuildScript "setup-nodejs"
