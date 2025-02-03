@@ -38,6 +38,11 @@ COPY --from=nvim-builder /neovim/runtime /usr/local/share/nvim/runtime
 
 ENV NVIM_CONFIG_VERSION=1.1.0
 
+# Set environment variables for locale
+ENV LANG=C.UTF-8
+ENV LANGUAGE=en_US:en
+ENV LC_ALL=C.UTF-8
+
 COPY rootfs/ /
 
 RUN chmod +x /build-scripts/* \
