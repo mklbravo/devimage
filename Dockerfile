@@ -30,6 +30,8 @@ RUN git checkout stable && \
 #--------------------------------------------------------------------------
 FROM ${FROM_IMAGE}
 
+ARG TARGETARCH
+
 # Copy the built Neovim binary from the builder stage
 COPY --from=nvim-builder /neovim/build/bin/nvim /usr/local/bin/nvim
 

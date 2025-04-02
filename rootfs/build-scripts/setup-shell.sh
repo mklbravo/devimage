@@ -7,6 +7,7 @@ echo "Installing required packages..."
 /build-scripts/package-manager.sh install \
   curl \
   git \
+  tar \
   tmux \
   tmuxinator \
   zsh
@@ -37,3 +38,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Install Fuzzy Finder..."
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all --no-bash --no-fish
+
+# See: https://github.com/charmbracelet/gum
+GUM_VERSION="0.16.0"
+echo "Installing Gum version ${GUM_VERSION} for ${TARGETARCH} architecture..."
+curl -L "https://github.com/charmbracelet/gum/releases/download/v${GUM_VERSION}/gum_${GUM_VERSION}_$(uname -s)_${TARGETARCH}.tar.gz" -o "/tmp/gum.tar.gz"
+tar -xzf "/tmp/gum.tar.gz" -C "/usr/local/bin" --strip-components=1
