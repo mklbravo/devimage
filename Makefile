@@ -8,8 +8,8 @@ help: ## Displays this list of targets with descriptions
 build-debian-12: ## Build Debian 12 (bookworm) development image
 	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):debian-12 --build-arg "FROM_IMAGE=debian:12" .
 
-build-go-1.22: ## Build  Go 1.22 development image
-	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):go-1.22 --build-arg "FROM_IMAGE=golang:1.22-bookworm" .
+build-go-1.23: ## Build  Go 1.23 development image
+	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):go-1.23 --build-arg "FROM_IMAGE=golang:1.23-bookworm" .
 
 build-node-18: ## Build  Node 18 development image
 	docker build --no-cache --force-rm --file Dockerfile --tag $(IMAGE_NAME):node-18 --build-arg "FROM_IMAGE=node:18-bookworm" .
