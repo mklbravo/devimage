@@ -1,0 +1,9 @@
+#!/command/with-contenv execlineb
+
+# Ensure script is executable before executing it
+foreground {
+    chmod +x /etc/s6-overlay/s6-rc.d/oneshot-base-nvim-configuration/up-script.sh
+}
+
+# Execute the script with the environment variables
+/command/with-contenv /etc/s6-overlay/s6-rc.d/oneshot-base-nvim-configuration/up-script.sh
