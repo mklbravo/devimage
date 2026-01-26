@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "context7": {
+      "type": "streamable-http",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "git": {
+      "args": [
+        "mcp-server-git",
+        "--repository",
+        "/src"
+      ],
+      "command": "uvx"
+    },
+    "github": {
+      "headers": {
+        "Authorization": "Bearer ${GH_TOKEN}"
+      },
+      "url": "https://api.githubcopilot.com/mcp/"
+    }
+  }
+}
