@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Node is required by some packages installed by Mason on Neovim
-NODE_VERSION=v22.11.0
+NODE_VERSION=v24.13.0
 ARCH=x64
 
 if [ "$(uname -m)" = "aarch64" ]; then
