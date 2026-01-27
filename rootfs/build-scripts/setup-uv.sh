@@ -6,4 +6,4 @@
 
 echo "Setting-Up uv..."
 
-curl -LsSf https://astral.sh/uv/install.sh | sh
+curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="/usr/local/bin" sh
