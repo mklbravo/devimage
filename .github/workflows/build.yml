@@ -31,8 +31,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - image: "golang:1.24-trixie"
-            tag: "go-1.24"
+          - image: "golang:1.25-trixie"
+            tag: "go-1.25"
 
           - image: "php:8.3-fpm-trixie"
             tag: "php-8.3"
