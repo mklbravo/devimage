@@ -8,7 +8,8 @@ echo "Installing required packages..."
   git \
   python3 \
   python3-venv \
-  ripgrep
+  ripgrep \
+  tree-sitter-cli
 
 echo "Checking system architecture..."
 UNAME_OUT="$(uname)"
