@@ -28,18 +28,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        include:
-          - image: "golang:1.25-trixie"
-            tag: "go-1.25"
-
-          - image: "php:8.3-fpm-trixie"
-            tag: "php-8.3"
-
-          - image: "debian:13"
-            tag: "debian-13"
-
     steps:
       - name: "Checkout Repository"
         uses: "actions/checkout@v6"
@@ -64,19 +52,15 @@ jobs:
         with:
           images: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
 
-      - name: "Set up QEMU"
-        uses: "docker/setup-qemu-action@v4"
-
-      - name: "Set up Docker Buildx"
-        uses: "docker/setup-buildx-action@v3"
-
       - name: "Build Docker image"
         uses: "docker/build-push-action@v6.19.2"
         with:
           build-args: |
-            FROM_IMAGE=${{ matrix.image }}
+            FROM_IMAGE=debian:13
           context: "."
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64,linux/arm64
           push: ${{ github.ref == 'refs/heads/main' }}
-          tags: "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.tag }}"
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:debian-13
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
