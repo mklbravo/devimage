@@ -34,7 +34,7 @@ jobs:
               echo "Attempting to delete untagged image with version Name: $IMAGE_NAME"
 
               # See: https://docs.github.com/en/rest/packages/packages?apiVersion=2022-11-28#delete-package-version-for-a-user
-              RESPONSE_CODE=$(curl -s -o /dev/null "%{http_code}" -X DELETE -H "Authorization: Bearer $GHCR_TOKEN" \
+              RESPONSE_CODE=$(curl -s -w '%{http_code}' -o /dev/null -X DELETE -H "Authorization: Bearer $GHCR_TOKEN" \
                 -H "Accept: application/vnd.github+json" \
                 "https://api.github.com/users/$GHCR_OWNER/packages/container/$GHCR_REPO/versions/$VERSION_ID")
 
