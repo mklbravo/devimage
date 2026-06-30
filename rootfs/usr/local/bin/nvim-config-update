@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+echo "Syncing Neovim configuration and plugins..."
+
+# Pull the latest nvim config from repository
+echo "Pulling latest Neovim configuration from repository..."
+cd ~/.config/nvim && git pull origin main 2>/dev/null || git pull origin HEAD 2>/dev/null || {
+    echo "Warning: Could not pull from remote. Using existing configuration."
+}
+
+# Sync Lazy packages
+echo "Syncing Lazy packages..."
+nvim --headless +'Lazy sync' +qall
+
+echo "Neovim configuration and plugins synced successfully!"

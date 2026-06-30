@@ -1,0 +1,7 @@
+#!/command/with-contenv execlineb
+
+foreground {
+    chmod +x /usr/local/bin/nvim-config-update
+}
+
+/usr/local/bin/nvim-config-update
