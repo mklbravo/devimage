@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# POSIX dot notation sources the file into this shell, making its functions available here.
+. /build-scripts/lib/architecture.sh
+
 echo "Setting-Up Neovim..."
 
 echo "Installing required packages..."
@@ -13,7 +16,7 @@ echo "Installing required packages..."
 
 echo "Checking system architecture..."
 UNAME_OUT="$(uname)"
-ARCH="$(uname -m)"
+ARCH="$(get_architecture neovim)"
 
 case "$UNAME_OUT" in
 Darwin)
@@ -24,19 +27,6 @@ Linux)
   ;;
 *)
   echo "Unsupported OS: $UNAME_OUT"
-  exit 1
-  ;;
-esac
-
-case "$ARCH" in
-x86_64)
-  ARCH="x86_64"
-  ;;
-arm64 | aarch64)
-  ARCH="arm64"
-  ;;
-*)
-  echo "Unsupported architecture: $ARCH"
   exit 1
   ;;
 esac

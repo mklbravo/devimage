@@ -1,12 +1,11 @@
 #!/bin/sh
 
+# POSIX dot notation sources the file into this shell, making its functions available here.
+. /build-scripts/lib/architecture.sh
+
 # Node is required by some packages installed by Mason on Neovim
 NODE_VERSION=v24.13.0
-ARCH=x64
-
-if [ "$(uname -m)" = "aarch64" ]; then
-  ARCH=arm64
-fi
+ARCH=$(get_architecture node)
 
 echo "Setting-Up Node.js... (${NODE_VERSION})"
 

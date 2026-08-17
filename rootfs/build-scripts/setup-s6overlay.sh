@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# POSIX dot notation sources the file into this shell, making its functions available here.
+. /build-scripts/lib/architecture.sh
+
 echo "Setting-Up s6-overlay..."
 
 echo "Installing required packages..."
@@ -12,23 +15,7 @@ echo "Installing required packages..."
 S6_OVERLAY_VERSION=3.1.6.0
 
 echo "Determining s6-overlay architecture..."
-
-ARCH_INPUT="$(uname -m)"
-echo "Detected architecture: $ARCH_INPUT"
-
-case "$ARCH_INPUT" in
-amd64 | x86_64)
-  S6_ARCH="x86_64"
-  ;;
-arm64 | aarch64)
-  S6_ARCH="aarch64"
-  ;;
-*)
-  echo "Unsupported architecture: $ARCH_INPUT"
-  exit 1
-  ;;
-esac
-
+S6_ARCH=$(get_architecture s6)
 echo "Determined s6-overlay architecture: $S6_ARCH"
 
 # See: https://github.com/just-containers/s6-overlay#installation
