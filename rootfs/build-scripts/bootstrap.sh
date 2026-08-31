@@ -15,6 +15,7 @@ executeBuildScript() {
 executeBuildScript "setup-s6overlay"
 executeBuildScript "setup-shell"
 executeBuildScript "setup-nodejs"
+executeBuildScript "setup-pi"
 executeBuildScript "setup-nvim"
 executeBuildScript "setup-lazygit"
 executeBuildScript "setup-secrets"
