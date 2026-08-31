@@ -38,6 +38,7 @@ All images include:
 - **Editor**: Neovim with Lazy plugin manager and Mason language servers
 - **Git Tools**: Git, GitHub CLI, Lazygit
 - **Development**: Build essentials, Ripgrep, Tree-sitter, Python utilities
+- **Coding Agent**: Pi
 - **Package Managers**: uv (Python), language-specific package managers
 - **MCP Servers**: Context7, Git, GitHub Copilot integration
 
