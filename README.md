@@ -52,30 +52,36 @@ docker run -e NVIM_LANGUAGES="python,rust,go" ghcr.io/mklbravo/devimage:debian-1
 
 Multiple languages should be comma-separated without spaces.
 
-### Secrets
+### SSH Agent
 
-DevImages make some preparations so that you can use secrets in your development environment. 
+DevImages use the SSH agent of the host, so your private keys never leave your machine
+and you don't need to configure SSH keys inside the container.
 
-#### SSH Key
+The image expects the agent socket at `/run/ssh-agent.sock` (`SSH_AUTH_SOCK` is already set).
+Make sure your keys are loaded in the host agent (`ssh-add -l`) and mount the socket:
 
-You can define your local SSH to be used inside the container. 
-This way you don't need to configure a new SSH key inside the container each time you start the container,
-and also you can use it to access your repositories.
-
-To do this you need to define the `ssh_private_key` on your docker-compose.yml file. 
-
-```yaml
-secrets:
-  ssh_private_key:
-    file: ~/.ssh/<your_private_key>
-```
-
-Then configure the image based on `devimage` to use this secret.
+**macOS (Docker Desktop)**
 
 ```yaml
 services:
   dev:
     image: devimage
-    secrets:
-      - ssh_private_key
+    volumes:
+      - /run/host-services/ssh-auth.sock:/run/ssh-agent.sock
+```
+
+**Linux**
+
+```yaml
+services:
+  dev:
+    image: devimage
+    volumes:
+      - ${SSH_AUTH_SOCK}:/run/ssh-agent.sock
+```
+
+With `docker run`, use the same mount with `-v`, e.g.:
+
+```bash
+docker run -v /run/host-services/ssh-auth.sock:/run/ssh-agent.sock ghcr.io/mklbravo/devimage:debian-13
 ```

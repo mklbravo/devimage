@@ -19,7 +19,7 @@ executeBuildScript "setup-claude-code"
 executeBuildScript "setup-pi"
 executeBuildScript "setup-nvim"
 executeBuildScript "setup-lazygit"
-executeBuildScript "setup-secrets"
+executeBuildScript "setup-ssh"
 executeBuildScript "setup-github-cli"
 executeBuildScript "setup-uv"
 
