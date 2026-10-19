@@ -57,8 +57,8 @@ Multiple languages should be comma-separated without spaces.
 DevImages use the SSH agent of the host, so your private keys never leave your machine
 and you don't need to configure SSH keys inside the container.
 
-The image expects the agent socket at `/run/ssh-agent.sock` (`SSH_AUTH_SOCK` is already set).
-Make sure your keys are loaded in the host agent (`ssh-add -l`) and mount the socket:
+Make sure your keys are loaded in the host agent (`ssh-add -l`), mount the agent socket
+into the container and point `SSH_AUTH_SOCK` to the mounted path:
 
 **macOS (Docker Desktop)**
 
@@ -66,6 +66,8 @@ Make sure your keys are loaded in the host agent (`ssh-add -l`) and mount the so
 services:
   dev:
     image: devimage
+    environment:
+      SSH_AUTH_SOCK: /run/ssh-agent.sock
     volumes:
       - /run/host-services/ssh-auth.sock:/run/ssh-agent.sock
 ```
@@ -76,12 +78,17 @@ services:
 services:
   dev:
     image: devimage
+    environment:
+      SSH_AUTH_SOCK: /run/ssh-agent.sock
     volumes:
       - ${SSH_AUTH_SOCK}:/run/ssh-agent.sock
 ```
 
-With `docker run`, use the same mount with `-v`, e.g.:
+With `docker run`, use the same mount and variable, e.g.:
 
 ```bash
-docker run -v /run/host-services/ssh-auth.sock:/run/ssh-agent.sock ghcr.io/mklbravo/devimage:debian-13
+docker run \
+  -v /run/host-services/ssh-auth.sock:/run/ssh-agent.sock \
+  -e SSH_AUTH_SOCK=/run/ssh-agent.sock \
+  ghcr.io/mklbravo/devimage:debian-13
 ```
